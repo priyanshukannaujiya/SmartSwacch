@@ -128,6 +128,5 @@ Expansion to other cities
 Developed with ❤ for a cleaner and greener Mumbai 🌱
 =======
 Developed with ❤️ for a cleaner and greener Mumbai 🌱
->>>>>>> 639b261 (Initial commit)
 
 # Smartswach
