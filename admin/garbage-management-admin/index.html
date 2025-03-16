@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - Garbage Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <a href="admin.html">Admin Panel</a>
+            </nav>
+        </header>
+        
+        <section class="stats">
+            <div class="card">Total Complaints: <span id="total">50</span></div>
+            <div class="card">Pending Complaints: <span id="pending">20</span></div>
+            <div class="card">Resolved Complaints: <span id="resolved">30</span></div>
+        </section>
+        
+        <section class="complaints">
+            <h2>User Complaints</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>Complaint</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="complaintList">
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>Garbage not collected in area</td>
+                        <td><span class="pending">Pending</span></td>
+                        <td>
+                            <button class="approve-btn">Approve</button>
+                            <button class="reject-btn">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Floating Button -->
+    <a href="mumbai.html" class="floating-btn">Explore Green Space Map</a>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>

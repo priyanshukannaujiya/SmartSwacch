@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SmartSwacch</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="container">
+        <!-- Heading Added Here -->
+        <h1 class="heading">SmartSwacch</h1>
+        
+        <div class="login-box">
+            <div class="image-container">
+                <img src="city-image.jpg" alt="City Landmark" class="login-image">
+            </div>
+            <h2>Login</h2>
+            <div class="input-group">
+                <input type="email" placeholder="Email">
+                <span class="material-icons">arrow_forward</span>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" id="password">
+                <span class="material-icons" onclick="togglePassword()">visibility</span>
+            </div>
+            <button class="login-btn" onclick="redirectToRegister()">Log In</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+    <script>
+        function redirectToRegister() {
+            window.location.href = "index2.html"; // Change to your actual registration page
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Reporting Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-lg bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-center mb-4">Report an Issue</h2>
+
+        <form id="issueForm" class="space-y-4" method="POST">
+            <!-- Step 1: Upload Photo -->
+            <div class="text-center">
+                <label class="block text-lg font-semibold mb-2">Upload your File :</label>
+                <div id="drop-area" class="w-full border-2 border-dashed border-gray-400 rounded-lg p-6 text-center cursor-pointer bg-gray-50 hover:bg-gray-100 transition-all">
+                    <img src="https://cdn-icons-png.flaticon.com/512/109/109612.png" alt="Upload" class="w-12 mx-auto mb-3">
+                    <p class="text-gray-700 font-medium">Drag & Drop <br> <span class="text-blue-500 cursor-pointer">or browse</span></p>
+                    <p class="text-xs text-gray-500 mt-1">Supports: JPEG, JPG, PNG</p>
+                    <input type="file" id="file-input" class="hidden" accept="image/jpeg, image/jpg, image/png" name="File">
+                </div>
+                <p id="file-name" class="text-sm text-gray-600 mt-3 hidden"></p>
+            </div>
+
+            <!-- Step 2: Enter Description -->
+            <div>
+                <label class="block font-semibold mb-2">Description:</label>
+                <textarea class="w-full border p-2 rounded" name="Description" placeholder="Enter description" required></textarea>
+            </div>
+
+            <!-- Step 3: Enter Issue Type -->
+            <div>
+                <label class="block font-semibold mb-2">Issue Type:</label>
+                <select class="w-full border p-2 rounded" required>
+                    <option value="" disabled selected>Select category</option>
+                    <option value="Road">Road Issues</option>
+                    <option value="Garbage Accumulation">Garbage Accumulation</option>
+                    <option value="Water Clogging">Water Clogging</option>
+                    <option value="Electricity">Electricity</option>
+                    <option value="Water">Water Supply</option>
+                    <option value="Other">Other</option>
+                    <input type="text" name="City">
+                </select>
+            </div>
+
+            <!-- Step 4: Enter Area -->
+            <div>
+                <label class="block font-semibold mb-2">Area:</label>
+                <input type="text" class="w-full border p-2 rounded" Name="Area" placeholder="Enter area name" required>
+            </div>
+
+            <!-- Step 5: Select Cities -->
+            <div>
+                <label class="block font-semibold mb-2">Select Cities:</label>
+                <select class="w-full border p-2 rounded" required>
+                    <option value="" disabled selected>Select city</option>
+                    <option value="18.9068,72.8156">Colaba</option>
+                    <option value="18.9260,72.8226">Nariman Point</option>
+                    <option value="18.9437,72.8255">Marine Lines</option>
+                    <option value="18.9333,72.8254">Churchgate</option>
+                    <option value="18.9356,72.8361">Fort</option>
+                    <option value="18.9061,72.8116">Cuffe Parade</option>
+                    <option value="18.9540,72.7949">Malabar Hill</option>
+                    <option value="19.0006,72.8154">Worli</option>
+                    <option value="19.0169,72.8286">Prabhadevi</option>
+                    <option value="19.0200,72.8427">Dadar</option>
+                    <option value="19.0350,72.8422">Mahim</option>
+                    <option value="19.0544,72.8405">Bandra</option>
+                    <option value="19.0727,72.8346">Khar</option>
+                    <option value="19.0825,72.8371">Santacruz</option>
+                    <option value="19.1197,72.8464">Andheri</option>
+                    <option value="19.1076,72.8263">Juhu</option>
+                    <option value="19.1663,72.8526">Goregaon</option>
+                    <option value="19.1869,72.8486">Malad</option>
+                    <option value="19.2033,72.8414">Kandivali</option>
+                    <option value="19.2304,72.8567">Borivali</option>
+                    <option value="19.2500,72.8597">Dahisar</option>
+                    <option value="19.2876,72.8682">Mira Road</option>
+                    <option value="19.2183,72.9781">Thane</option>
+                    <option value="19.0330,73.0297">Navi Mumbai</option>
+                </select>
+               
+            </div>
+
+            <!-- Step 6: Enter Pincode -->
+            <div>
+                <label class="block font-semibold mb-2">Pincode:</label>
+                <input type="text" class="w-full border p-2 rounded" name="Pincode" placeholder="Enter pincode" required id="pincode">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded font-semibold hover:bg-blue-600">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const dropArea = document.getElementById("drop-area");
+        const fileInput = document.getElementById("file-input");
+        const fileNameDisplay = document.getElementById("file-name");
+        const pincodeInput = document.getElementById("pincode");
+
+        // Click to upload
+        dropArea.addEventListener("click", () => fileInput.click());
+
+        // File Selection
+        fileInput.addEventListener("change", (event) => handleFiles(event.target.files));
+
+        // Drag & Drop
+        dropArea.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            dropArea.classList.add("bg-gray-200");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("bg-gray-200");
+        });
+
+        dropArea.addEventListener("drop", (event) => {
+            event.preventDefault();
+            dropArea.classList.remove("bg-gray-200");
+            handleFiles(event.dataTransfer.files);
+        });
+
+        // Handle file uploads
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                if (["image/jpeg", "image/jpg", "image/png"].includes(file.type)) {
+                    fileNameDisplay.textContent = `Uploaded: ${file.name}`;
+                    fileNameDisplay.classList.remove("hidden");
+                } else {
+                    alert("Only JPEG, JPG, and PNG files are allowed.");
+                }
+            }
+        }
+
+        // Restrict pincode to numbers only
+        pincodeInput.addEventListener("input", (event) => {
+            const value = event.target.value;
+            event.target.value = value.replace(/\D/g, ""); // Remove non-numeric characters
+        });
+
+        // Form submission
+        document.getElementById('issueForm').addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent form submission to backend
+            window.location.href = "index4.html"; // Redirect to Thank You page
+        });
+    </script>
+</body>
+</html>

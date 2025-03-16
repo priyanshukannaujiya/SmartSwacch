@@ -96,11 +96,19 @@ Geospatial Analysis: GeoPandas, Folium, Pyrosm (for green space visualization)
 
 Contributors
 
+<<<<<<< HEAD
 Heramb Bahe - Lead Developer
 
 Shivam Kumar - co Developer
 
 Priyanshu Kannaujiya - ui/ux
+=======
+heramb bahe - Lead Developer
+
+Shivam Kumar - co Developer
+
+Priyanshu kannaujiya - ui/ux
+>>>>>>> 639b261 (Initial commit)
 
 
 License
@@ -117,6 +125,10 @@ Mobile notifications for updates on complaints
 
 Expansion to other cities
 
+<<<<<<< HEAD
 Developed with ❤ for a cleaner and greener Mumbai 🌱
+=======
+Developed with ❤️ for a cleaner and greener Mumbai 🌱
+>>>>>>> 639b261 (Initial commit)
 
 # Smartswach
