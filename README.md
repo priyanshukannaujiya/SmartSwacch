@@ -108,7 +108,6 @@ heramb bahe - Lead Developer
 Shivam Kumar - co Developer
 
 Priyanshu kannaujiya - ui/ux
->>>>>>> 639b261 (Initial commit)
 
 
 License
@@ -125,7 +124,7 @@ Mobile notifications for updates on complaints
 
 Expansion to other cities
 
-<<<<<<< HEAD
+
 Developed with ❤ for a cleaner and greener Mumbai 🌱
 =======
 Developed with ❤️ for a cleaner and greener Mumbai 🌱
